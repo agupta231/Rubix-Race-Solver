@@ -24,5 +24,5 @@ public abstract class Node<T> {
         this._neighbors.add(newNeighbor);
     }
 
-    abstract boolean equivalentTo(Node<T> otherNode);
+    abstract boolean equivalentTo(Node otherNode);
 }

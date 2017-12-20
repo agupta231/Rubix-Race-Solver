@@ -8,7 +8,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class RubixRaceCombinationsGraph {
-    private HashMap<BoardColor[][], Board> nodesMap;
+    private HashMap<Integer[][], Board> nodesMap;
 
     public RubixRaceCombinationsGraph() {
         nodesMap = new HashMap<>();
@@ -18,7 +18,7 @@ public class RubixRaceCombinationsGraph {
         return nodesMap.values();
     }
 
-    public Board getNodeForData(BoardColor[][] data) {
+    public Board getNodeForData(int[][] data) {
         return nodesMap.getOrDefault(data, null);
     }
 
@@ -27,7 +27,7 @@ public class RubixRaceCombinationsGraph {
     }
 
     public void generateGraph(Board startingNode) {
-        HashMap<BoardColor[][], Board> vistedNodes = new HashMap<>();
+        HashMap<Integer[][], Board> vistedNodes = new HashMap<>();
         Queue<Board> boardsToVisit = new LinkedList<>();
 
         boardsToVisit.add(startingNode);

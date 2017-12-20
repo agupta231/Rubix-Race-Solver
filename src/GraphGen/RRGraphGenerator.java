@@ -1,9 +1,11 @@
 package GraphGen;
 
-public class RRGraphGenerator implements GraphGenerator {
+import Board.Board;
 
-    @Override
-    public Object generateGraph(Object startingPos) {
-        return null;
+public class RRGraphGenerator implements GraphGenerator<RubixRaceCombinationsGraph, Board> {
+    public RubixRaceCombinationsGraph generateGraph(Board startingNode) {
+        Graph graph = new RubixRaceCombinationsGraph();
+
+
     }
 }

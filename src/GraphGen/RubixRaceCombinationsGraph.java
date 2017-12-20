@@ -18,7 +18,7 @@ public class RubixRaceCombinationsGraph {
     }
 
     public Board getNodeForData(BoardColor[][] data) {
-        return nodesMap.getOrDefault(data, null);
+        return nodesMap.getOrDefault(Arrays.deepHashCode(data), null);
     }
 
     public void addNode(Board newNode) {

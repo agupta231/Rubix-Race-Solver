@@ -6,4 +6,6 @@ public interface Graph<T, K> {
     Collection<? extends Node> getNodes();
 
     T getNodeForData(K data);
+
+    void addNode(T newNode);
 }

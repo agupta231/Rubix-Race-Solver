@@ -2,6 +2,8 @@ package Board;
 
 import GraphGen.Node;
 
+import java.util.Collection;
+
 public class Board extends Node<BoardColor[][]> {
     public static BoardColor[][] startingBoard = new BoardColor[][]
                    {{BoardColor.RED, BoardColor.GREEN, BoardColor.GREEN, BoardColor.WHITE, BoardColor.YELLOW},
@@ -17,6 +19,31 @@ public class Board extends Node<BoardColor[][]> {
 
     public Board(BoardColor[][] state) {
         this.setData(state);
+    }
+
+    @Override
+    public BoardColor[][] getData() {
+        return new BoardColor[0][];
+    }
+
+    @Override
+    public void setData(BoardColor[][] newData) {
+
+    }
+
+    @Override
+    public Collection<Board> getNeighbors() {
+        return null;
+    }
+
+    @Override
+    public void setNeighbors(Collection<Node> newNeighbors) {
+
+    }
+
+    @Override
+    public void addNeighbor(Node newNeighbor) {
+
     }
 
     @Override

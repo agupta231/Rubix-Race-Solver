@@ -22,4 +22,9 @@ public class RubixRaceCombinationsGraph implements Graph<Board, BoardColor[][]> 
     public Board getNodeForData(BoardColor[][] data) {
         return nodesMap.getOrDefault(data, null);
     }
+
+    @Override
+    public void addNode(Board newNode) {
+
+    }
 }

@@ -8,17 +8,17 @@ import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
-        final BoardColor[][] startingBoard = new BoardColor[][]
-               {{BoardColor.RED, BoardColor.GREEN, BoardColor.GREEN, BoardColor.WHITE, BoardColor.YELLOW},
-                {BoardColor.RED, BoardColor.ORANGE, BoardColor.YELLOW, BoardColor.RED, BoardColor.BLANK},
-                {BoardColor.GREEN, BoardColor.ORANGE, BoardColor.YELLOW, BoardColor.RED, BoardColor.ORANGE},
-                {BoardColor.ORANGE, BoardColor.BLUE, BoardColor.BLUE, BoardColor.WHITE, BoardColor.BLUE},
-                {BoardColor.YELLOW, BoardColor.GREEN, BoardColor.WHITE, BoardColor.BLUE, BoardColor.YELLOW}};
+        final Integer[][] startingBoard = new Integer[][]
+               {{1, 1, 2, 4, 5},
+                {1, 6, 5, 1, 0},
+                {2, 6, 5, 1, 6},
+                {6, 3, 3, 4, 3},
+                {5, 2, 4, 3, 5}};
 
-        final BoardColor[][] endingBoard = new BoardColor[][]
-               {{BoardColor.ORANGE, BoardColor.YELLOW, BoardColor.WHITE},
-                {BoardColor.ORANGE, BoardColor.YELLOW, BoardColor.RED},
-                {BoardColor.BLUE, BoardColor.BLUE, BoardColor.WHITE}};
+        final Integer[][] endingBoard = new Integer[][]
+               {{6, 5, 4},
+                {6, 5, 1},
+                {3, 3, 4}};
 
 
 //        Board startingNode = new Board(startingBoard);

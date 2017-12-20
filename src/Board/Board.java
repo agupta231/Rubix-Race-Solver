@@ -1,6 +1,7 @@
 package Board;
 
 import java.util.Collection;
+import java.util.LinkedList;
 
 public class Board {
     public static BoardColor[][] startingBoard = new BoardColor[][]
@@ -20,6 +21,7 @@ public class Board {
 
     public Board(BoardColor[][] state) {
         this.setData(state);
+        this.neighbors = null;
     }
 
     public BoardColor[][] getData() {
@@ -30,16 +32,83 @@ public class Board {
         this.data = newData;
     }
 
-    public Collection<? extends  Board> getNeighbors() {
-        return this.neighbors;
+    public Collection<? extends Board> getNeighbors() {
+        if (this.neighbors != null) {
+            return this.neighbors;
+        }
+        else {
+            LinkedList<Board> neighbors = new LinkedList<>();
+
+            final int rowLength = this.getData().length;
+            final int columnLength = this.getData()[0].length;
+
+            int rowIndex = -1;
+            int columnIndex = -1;
+
+            for(int i = 0; i < rowLength; i++) {
+                for(int j = 0; j < columnLength; j++) {
+                    if (this.getData()[i][j] == BoardColor.BLANK) {
+                        rowIndex = i;
+                        columnIndex = j;
+                    }
+                }
+            }
+
+            // TODO: abstract this in some manner... Don't like this hardcoding
+            boolean switchUp = true;
+            boolean switchDown = true;
+            boolean switchRight = true;
+            boolean switchLeft = true;
+
+            if (rowIndex == 0) {
+                switchUp = false;
+            }
+            if (columnIndex == 0) {
+                switchLeft = false;
+            }
+            if (rowIndex == rowLength - 1) {
+                switchDown = false;
+            }
+            if (columnIndex == columnLength - 1) {
+                switchRight = false;
+            }
+
+            if (switchUp) {
+                BoardColor[][] neighborData = this.data.clone();
+                neighborData[rowIndex][columnIndex] = neighborData[rowIndex - 1][columnIndex];
+                neighborData[rowIndex - 1][columnIndex] = BoardColor.BLANK;
+
+                neighbors.add(new Board(neighborData));
+            }
+            if (switchDown) {
+                BoardColor[][] neighborData = this.data.clone();
+                neighborData[rowIndex][columnIndex] = neighborData[rowIndex + 1][columnIndex];
+                neighborData[rowIndex + 1][columnIndex] = BoardColor.BLANK;
+
+                neighbors.add(new Board(neighborData));
+            }
+            if (switchLeft) {
+                BoardColor[][] neighborData = this.data.clone();
+                neighborData[rowIndex][columnIndex] = neighborData[rowIndex][columnIndex - 1];
+                neighborData[rowIndex][columnIndex - 1] = BoardColor.BLANK;
+
+                neighbors.add(new Board(neighborData));
+            }
+            if (switchRight) {
+                BoardColor[][] neighborData = this.data.clone();
+                neighborData[rowIndex][columnIndex] = neighborData[rowIndex][columnIndex + 1];
+                neighborData[rowIndex][columnIndex + 1] = BoardColor.BLANK;
+
+                neighbors.add(new Board(neighborData));
+            }
+
+            this.setNeighbors(neighbors);
+            return neighbors;
+        }
     }
 
     public void setNeighbors(Collection<Board> newNeighbors) {
         this.neighbors = newNeighbors;
-    }
-
-    public void addNeighbor(Board newNeighbor) {
-
     }
 
     public boolean equivalentTo(Board otherNode) {

@@ -1,7 +1,6 @@
 package GraphGen;
 
 import Board.Board;
-import Board.BoardColor;
 
 import java.util.Collection;
 import java.util.HashMap;

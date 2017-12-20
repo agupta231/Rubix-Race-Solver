@@ -35,7 +35,5 @@ public class Main {
 //        LinkedList<Board> optimalSolution = searchEngine.shortestPath(startingNode, endingBoard, graph);
 //
 //        System.out.println(optimalSolution);
-
-        System.out.println(startingBoard.equals(startingBoard.clone()));
     }
 }

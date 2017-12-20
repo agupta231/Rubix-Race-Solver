@@ -4,20 +4,31 @@ import java.awt.*;
 import java.util.Collection;
 import java.util.LinkedList;
 
+/**
+ * Board Color Scheme:
+ * 0: Blank
+ * 1: Red
+ * 2: Green
+ * 3: Blue
+ * 4: White
+ * 5: Yellow
+ * 6: Orange
+ */
+
 public class Board {
-    private BoardColor[][] data;
+    private int[][] data;
     private Collection<Board> neighbors;
 
-    public Board(BoardColor[][] state) {
+    public Board(int[][] state) {
         this.setData(state);
         this.neighbors = null;
     }
 
-    public BoardColor[][] getData() {
+    public int[][] getData() {
         return this.data;
     }
 
-    public void setData(BoardColor[][] newData) {
+    public void setData(int[][] newData) {
         this.data = newData;
     }
 
@@ -37,7 +48,7 @@ public class Board {
 
             for(int i = 0; i < rowLength; i++) {
                 for(int j = 0; j < columnLength; j++) {
-                    if (this.getData()[i][j] == BoardColor.BLANK) {
+                    if (this.getData()[i][j] == 0) {
                         rowIndex = i;
                         columnIndex = j;
                     }
@@ -64,30 +75,30 @@ public class Board {
             }
 
             if (switchUp) {
-                BoardColor[][] neighborData = this.data.clone();
+                int[][] neighborData = this.data.clone();
                 neighborData[rowIndex][columnIndex] = neighborData[rowIndex - 1][columnIndex];
-                neighborData[rowIndex - 1][columnIndex] = BoardColor.BLANK;
+                neighborData[rowIndex - 1][columnIndex] = 0;
 
                 neighbors.add(new Board(neighborData));
             }
             if (switchDown) {
-                BoardColor[][] neighborData = this.data.clone();
+                int[][] neighborData = this.data.clone();
                 neighborData[rowIndex][columnIndex] = neighborData[rowIndex + 1][columnIndex];
-                neighborData[rowIndex + 1][columnIndex] = BoardColor.BLANK;
+                neighborData[rowIndex + 1][columnIndex] = 0;
 
                 neighbors.add(new Board(neighborData));
             }
             if (switchLeft) {
-                BoardColor[][] neighborData = this.data.clone();
+                int[][] neighborData = this.data.clone();
                 neighborData[rowIndex][columnIndex] = neighborData[rowIndex][columnIndex - 1];
-                neighborData[rowIndex][columnIndex - 1] = BoardColor.BLANK;
+                neighborData[rowIndex][columnIndex - 1] = 0;
 
                 neighbors.add(new Board(neighborData));
             }
             if (switchRight) {
-                BoardColor[][] neighborData = this.data.clone();
+                int[][] neighborData = this.data.clone();
                 neighborData[rowIndex][columnIndex] = neighborData[rowIndex][columnIndex + 1];
-                neighborData[rowIndex][columnIndex + 1] = BoardColor.BLANK;
+                neighborData[rowIndex][columnIndex + 1] = 0;
 
                 neighbors.add(new Board(neighborData));
             }
@@ -101,12 +112,10 @@ public class Board {
         this.neighbors = newNeighbors;
     }
 
-    public boolean equivalentTo(Board otherNode) {
-        Board otherBoard = otherNode;
-
+    public boolean equivalentTo(Board otherBoard) {
         for (int i = 1; i < this.getData().length - 1; i++) {
             for (int j = 1; j < this.getData().length - 1; j++) {
-                if (this.getData()[i][j].equals(otherBoard.getData()[i][j])) {
+                if (this.getData()[i][j] != otherBoard.getData()[i][j]) {
                     return false;
                 }
             }
@@ -115,10 +124,10 @@ public class Board {
         return true;
     }
 
-    public boolean containsSequence(BoardColor[][] middleSequence) {
+    public boolean containsSequence(int[][] middleSequence) {
         for(int i = 0; i < middleSequence.length; i++) {
             for(int j = 0; j < middleSequence[0].length; j++) {
-                if (!middleSequence[i][j].equals(this.getData()[i + 1][j + 1])) {
+                if (middleSequence[i][j] != this.getData()[i + 1][j + 1]) {
                     return false;
                 }
             }

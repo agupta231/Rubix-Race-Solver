@@ -43,22 +43,28 @@ public class Board {
     }
 
     public boolean equivalentTo(Board otherNode) {
-        if(otherNode instanceof Board) {
-            Board otherBoard = (Board) otherNode;
+        Board otherBoard = otherNode;
 
-            for (int i = 1; i < this.getData().length - 1; i++) {
-                for (int j = 1; j < this.getData().length - 1; j++) {
-                    if (this.getData()[i][j].equals(otherBoard.getData()[i][j])) {
-                        return false;
-                    }
+        for (int i = 1; i < this.getData().length - 1; i++) {
+            for (int j = 1; j < this.getData().length - 1; j++) {
+                if (this.getData()[i][j].equals(otherBoard.getData()[i][j])) {
+                    return false;
                 }
             }
-
-            return true;
         }
 
-        else {
-            return false;
+        return true;
+    }
+
+    public boolean containsSequence(BoardColor[][] middleSequence) {
+        for(int i = 0; i < middleSequence.length; i++) {
+            for(int j = 0; j < middleSequence[0].length; j++) {
+                if (!middleSequence[i][j].equals(this.getData()[i + 1][j + 1])) {
+                    return false;
+                }
+            }
         }
+
+        return true;
     }
 }

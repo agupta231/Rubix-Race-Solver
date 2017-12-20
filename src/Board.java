@@ -1,6 +1,8 @@
 import java.util.LinkedList;
 
 public class Board extends Node<int[][]> {
+    public static int[][] startingBoard = {{2}, {3}};
+
     public Board(int[][] state) {
         this.setData(state);
     }

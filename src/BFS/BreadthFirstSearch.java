@@ -3,13 +3,14 @@ package BFS;
 import Board.*;
 import GraphGen.*;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BreadthFirstSearch {
-    public LinkedList<Board> shortestPath(Board startingNode, Integer[][] endingPosition, RubixRaceCombinationsGraph graph) {
-        HashMap<Integer[][], Board> vistedNodes = new HashMap<>();
+    public LinkedList<Board> shortestPath(Board startingNode, BoardColor[][] endingPosition, RubixRaceCombinationsGraph graph) {
+        HashMap<Integer, Board> vistedNodes = new HashMap<>();
         HashMap<Board, Integer> distances = new HashMap<>();
         Queue<Board> boardsToVisit = new LinkedList<>();
 
@@ -24,12 +25,11 @@ public class BreadthFirstSearch {
             }
 
             for (Board b : currentBoard.getNeighbors()) {
-                if(!vistedNodes.containsKey(b.getData())) {
+                if (!vistedNodes.containsKey(Arrays.deepHashCode(b.getData()))) {
                     distances.put(b, distances.get(currentBoard) + 1);
 
                     boardsToVisit.add(b);
-                }
-                else {
+                } else {
                     Board bOld = graph.getNodeForData(b.getData());
 
                     Integer oldDistance = distances.get(bOld);
@@ -40,7 +40,7 @@ public class BreadthFirstSearch {
                 }
             }
 
-            vistedNodes.put(currentBoard.getData(), currentBoard);
+            vistedNodes.put(Arrays.deepHashCode(currentBoard.getData()), currentBoard);
         }
 
         return null;

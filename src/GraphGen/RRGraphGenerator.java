@@ -13,31 +13,18 @@ public class RRGraphGenerator {
         HashMap<BoardColor[][], Board> vistedNodes = new HashMap<>();
         Queue<Board> boardsToVisit = new LinkedList<>();
 
-        graph.addNode(startingNode);
-
-        vistedNodes.put(startingNode.getData(), startingNode);
-
-        for (Board b : startingNode.getNeighbors()) {
-            b.addNeighbor(startingNode);
-            boardsToVisit.add(b);
-        }
+        boardsToVisit.add(startingNode);
 
         while (!boardsToVisit.isEmpty()) {
             Board currentBoard = boardsToVisit.poll();
 
             for (Board b : currentBoard.getNeighbors()) {
                 if(!vistedNodes.containsKey(b.getData())) {
-                    b.addNeighbor(currentBoard);
-
                     boardsToVisit.add(b);
-                }
-                else {
-                    Board bOld = graph.getNodeForData(b.getData());
-
-                    bOld.addNeighbor(currentBoard);
                 }
             }
 
+            graph.addNode(currentBoard);
             vistedNodes.put(currentBoard.getData(), currentBoard);
         }
 

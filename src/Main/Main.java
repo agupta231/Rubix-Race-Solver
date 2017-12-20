@@ -4,6 +4,7 @@ import BFS.BreadthFirstSearch;
 import Board.*;
 import GraphGen.RubixRaceCombinationsGraph;
 
+import java.util.Arrays;
 import java.util.LinkedList;
 
 public class Main {
@@ -35,5 +36,7 @@ public class Main {
 //        LinkedList<Board> optimalSolution = searchEngine.shortestPath(startingNode, endingBoard, graph);
 //
 //        System.out.println(optimalSolution);
+
+        System.out.println(Arrays.deepHashCode(startingBoard) == Arrays.deepHashCode(startingBoard.clone()));
     }
 }

@@ -1,14 +1,12 @@
 package GraphGen;
 
 import Board.Board;
-import Board.BoardColor;
 
 import java.lang.reflect.Array;
 import java.util.*;
 
 public class RubixRaceCombinationsGraph {
     private HashMap<Integer, Board> nodesMap;
-
     public RubixRaceCombinationsGraph() {
         nodesMap = new HashMap<>();
     }

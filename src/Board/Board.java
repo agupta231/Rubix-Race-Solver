@@ -1,10 +1,8 @@
 package Board;
 
-import GraphGen.Node;
-
 import java.util.Collection;
 
-public class Board extends Node<BoardColor[][]> {
+public class Board {
     public static BoardColor[][] startingBoard = new BoardColor[][]
                    {{BoardColor.RED, BoardColor.GREEN, BoardColor.GREEN, BoardColor.WHITE, BoardColor.YELLOW},
                     {BoardColor.RED, BoardColor.ORANGE, BoardColor.YELLOW, BoardColor.RED, BoardColor.BLANK},
@@ -17,37 +15,34 @@ public class Board extends Node<BoardColor[][]> {
                     {BoardColor.ORANGE, BoardColor.YELLOW, BoardColor.RED},
                     {BoardColor.BLUE, BoardColor.BLUE, BoardColor.WHITE}};
 
+    private BoardColor[][] data;
+    private Collection<Board> neighbors;
+
     public Board(BoardColor[][] state) {
         this.setData(state);
     }
 
-    @Override
     public BoardColor[][] getData() {
-        return new BoardColor[0][];
+        return this.data;
     }
 
-    @Override
     public void setData(BoardColor[][] newData) {
+        this.data = newData;
+    }
+
+    public Collection<? extends  Board> getNeighbors() {
+        return this.neighbors;
+    }
+
+    public void setNeighbors(Collection<Board> newNeighbors) {
+        this.neighbors = newNeighbors;
+    }
+
+    public void addNeighbor(Board newNeighbor) {
 
     }
 
-    @Override
-    public Collection<Board> getNeighbors() {
-        return null;
-    }
-
-    @Override
-    public void setNeighbors(Collection<Node> newNeighbors) {
-
-    }
-
-    @Override
-    public void addNeighbor(Node newNeighbor) {
-
-    }
-
-    @Override
-    public boolean equivalentTo(Node otherNode) {
+    public boolean equivalentTo(Board otherNode) {
         if(otherNode instanceof Board) {
             Board otherBoard = (Board) otherNode;
 
@@ -61,6 +56,7 @@ public class Board extends Node<BoardColor[][]> {
 
             return true;
         }
+
         else {
             return false;
         }

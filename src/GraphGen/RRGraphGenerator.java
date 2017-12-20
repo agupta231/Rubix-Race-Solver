@@ -1,16 +1,16 @@
 package GraphGen;
 
-import Board.Board;
+import Board.*;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class RRGraphGenerator implements GraphGenerator<Board> {
-    public Graph generateGraph(Board startingNode) {
-        Graph graph = new RubixRaceCombinationsGraph();
+public class RRGraphGenerator {
+    public RubixRaceCombinationsGraph generateGraph(Board startingNode) {
+        RubixRaceCombinationsGraph graph = new RubixRaceCombinationsGraph();
 
-        HashMap<Board.BoardColor[][], Board> vistedNodes = new HashMap<>();
+        HashMap<BoardColor[][], Board> vistedNodes = new HashMap<>();
         HashMap<Board, Integer> distances = new HashMap<>();
         Queue<Board> boardsToVisit = new LinkedList<>();
 

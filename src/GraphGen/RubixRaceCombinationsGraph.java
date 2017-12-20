@@ -6,24 +6,21 @@ import Board.BoardColor;
 import java.util.Collection;
 import java.util.HashMap;
 
-public class RubixRaceCombinationsGraph implements Graph<Board, BoardColor[][]> {
+public class RubixRaceCombinationsGraph {
     private HashMap<BoardColor[][], Board> nodesMap;
 
     RubixRaceCombinationsGraph() {
         nodesMap = new HashMap<>();
     }
 
-    @Override
-    public Collection<? extends Node> getNodes() {
+    public Collection<Board> getNodes() {
         return nodesMap.values();
     }
 
-    @Override
     public Board getNodeForData(BoardColor[][] data) {
         return nodesMap.getOrDefault(data, null);
     }
 
-    @Override
     public void addNode(Board newNode) {
 
     }

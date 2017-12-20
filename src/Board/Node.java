@@ -1,3 +1,5 @@
+package Board;
+
 import java.util.Collection;
 
 public abstract class Node<T> {
@@ -24,5 +26,5 @@ public abstract class Node<T> {
         this._neighbors.add(newNeighbor);
     }
 
-    abstract boolean equivalentTo(Node otherNode);
+    public abstract boolean equivalentTo(Node otherNode);
 }

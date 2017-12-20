@@ -1,3 +1,7 @@
+package BFS;
+
+import Board.Node;
+
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;

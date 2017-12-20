@@ -1,3 +1,7 @@
+package BFS;
+
+import Board.Node;
+
 import java.util.LinkedList;
 
 interface GraphSearchEngine {

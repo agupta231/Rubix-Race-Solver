@@ -1,6 +1,10 @@
 package Main;
 
+import BFS.BreadthFirstSearch;
 import Board.*;
+import GraphGen.RubixRaceCombinationsGraph;
+
+import java.util.LinkedList;
 
 public class Main {
     public static void main(String[] args) {
@@ -17,5 +21,15 @@ public class Main {
                 {BoardColor.BLUE, BoardColor.BLUE, BoardColor.WHITE}};
 
 
+        Board startingNode = new Board(startingBoard);
+
+        RubixRaceCombinationsGraph graph = new RubixRaceCombinationsGraph();
+        graph.generateGraph(startingNode);
+
+        BreadthFirstSearch searchEngine = new BreadthFirstSearch();
+
+        LinkedList<Board> optimalSolution = searchEngine.shortestPath(startingNode, endingBoard, graph);
+
+        System.out.println(optimalSolution);
     }
 }

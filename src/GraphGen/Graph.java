@@ -1,11 +1,9 @@
 package GraphGen;
 
-import Board.Node;
-
 import java.util.Collection;
 
-public interface Graph<T> {
+public interface Graph<T, K> {
     Collection<? extends Node> getNodes();
 
-    Node<T> getNodeForData(T data);
+    T getNodeForData(K data);
 }

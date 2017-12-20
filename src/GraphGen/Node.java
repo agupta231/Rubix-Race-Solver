@@ -1,4 +1,4 @@
-package Board;
+package GraphGen;
 
 import java.util.Collection;
 

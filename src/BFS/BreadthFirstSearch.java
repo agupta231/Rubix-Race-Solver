@@ -1,6 +1,6 @@
 package BFS;
 
-import Board.Node;
+import GraphGen.Node;
 
 import java.util.HashMap;
 import java.util.HashSet;

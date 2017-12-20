@@ -1,5 +1,7 @@
 package Board;
 
+import GraphGen.Node;
+
 public class Board extends Node<BoardColor[][]> {
     public static BoardColor[][] startingBoard = new BoardColor[][]
                    {{BoardColor.RED, BoardColor.GREEN, BoardColor.GREEN, BoardColor.WHITE, BoardColor.YELLOW},

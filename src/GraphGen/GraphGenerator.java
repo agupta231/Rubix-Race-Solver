@@ -1,4 +1,5 @@
 package GraphGen;
 
-public interface GraphGenerator {
+public interface GraphGenerator<T, K> {
+    T generateGraph(K startingPos);
 }

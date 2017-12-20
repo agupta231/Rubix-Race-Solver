@@ -18,7 +18,7 @@ public class RubixRaceCombinationsGraph {
         return nodesMap.values();
     }
 
-    public Board getNodeForData(int[][] data) {
+    public Board getNodeForData(Integer[][] data) {
         return nodesMap.getOrDefault(data, null);
     }
 

@@ -8,8 +8,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BreadthFirstSearch {
-    public LinkedList<Board> shortestPath(Board startingNode, BoardColor[][] endingPosition, RubixRaceCombinationsGraph graph) {
-        HashMap<BoardColor[][], Board> vistedNodes = new HashMap<>();
+    public LinkedList<Board> shortestPath(Board startingNode, Integer[][] endingPosition, RubixRaceCombinationsGraph graph) {
+        HashMap<Integer[][], Board> vistedNodes = new HashMap<>();
         HashMap<Board, Integer> distances = new HashMap<>();
         Queue<Board> boardsToVisit = new LinkedList<>();
 

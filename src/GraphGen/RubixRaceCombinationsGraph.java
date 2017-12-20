@@ -35,15 +35,24 @@ public class RubixRaceCombinationsGraph {
 
         while (!boardsToVisit.isEmpty()) {
             Board currentBoard = boardsToVisit.poll();
+            vistedNodes.put(currentBoard.getData(), currentBoard);
+
+            System.out.println(vistedNodes.size());
 
             for (Board b : currentBoard.getNeighbors()) {
                 if(!vistedNodes.containsKey(b.getData())) {
                     boardsToVisit.add(b);
                 }
+                else if(vistedNodes.containsKey(b.getData())){
+                    System.out.println("Here bb");
+                }
+
+                System.out.println(vistedNodes.containsKey(b.getData()));
             }
 
             this.addNode(currentBoard);
-            vistedNodes.put(currentBoard.getData(), currentBoard);
+
+            System.out.println(boardsToVisit.size());
         }
     }
 }

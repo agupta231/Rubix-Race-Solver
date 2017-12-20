@@ -1,5 +1,6 @@
 package Board;
 
+import java.awt.*;
 import java.util.Collection;
 import java.util.LinkedList;
 
@@ -22,6 +23,7 @@ public class Board {
 
     public Collection<? extends Board> getNeighbors() {
         if (this.neighbors != null) {
+            System.out.println("Yee haw");
             return this.neighbors;
         }
         else {

@@ -1,17 +1,14 @@
 package BFS;
 
 import Board.*;
-import GraphGen.RRGraphGenerator;
-import GraphGen.RubixRaceCombinationsGraph;
+import GraphGen.*;
 
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Queue;
 
 public class BreadthFirstSearch {
-    public LinkedList<Board> shortestPath(Board startingNode, BoardColor[][] endingPosition) {
-        RubixRaceCombinationsGraph graph = (new RRGraphGenerator()).generateGraph(startingNode);
-
+    public LinkedList<Board> shortestPath(Board startingNode, BoardColor[][] endingPosition, RubixRaceCombinationsGraph graph) {
         HashMap<BoardColor[][], Board> vistedNodes = new HashMap<>();
         HashMap<Board, Integer> distances = new HashMap<>();
         Queue<Board> boardsToVisit = new LinkedList<>();
